@@ -22,34 +22,43 @@
             justify-content: space-between;
             align-items: center;
             background-color: white;
-            padding: 10px 15px;
-            color: white;
+            padding: 5px 10px;
+            border-bottom: 1px solid #ddd;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .menu .hamburger {
             font-size: 24px;
-            color: black;
+            color: #333;
             cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .menu .hamburger:hover {
+            background-color: #f5f5f5;
         }
 
         .menu .title {
             font-size: 18px;
-            color: black;
+            color: #333;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             margin: 0;
+            font-weight: 500;
         }
     
-         .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-         }
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
         .dropdown {
             display: none;
@@ -60,7 +69,7 @@
             left: 0;
             z-index: 999;
             box-sizing: border-box;
-            height: auto; /* Automatically adjust height */
+            height: auto;
             border-radius: 0 7px 7px 0; 
         }
     
@@ -84,22 +93,18 @@
         }
 
         .chat-container {
-           flex: 1;
-           max-width: 600px;
-           margin: 20px auto 0; 
-           width: 100%;
-           height: calc(100vh - 80px);
-           border-radius: 10px;
-           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-           background-color: white;
-           display: flex;
-           flex-direction: column;
-           position: relative;
-           overflow: hidden;
-           z-index: 1;
-           padding-top: 60:px
-         }
-
+            flex: 1;
+            max-width: 600px;
+            margin: 50px auto 0;
+            width: 100%;
+            height: calc(100vh - 50px);
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
 
         .chat-messages {
             flex: 1;
@@ -108,20 +113,20 @@
             display: flex;
             flex-direction: column;
             scroll-behavior: smooth;
-            background-color: #f9f9f9;
-            margin-bottom: 50px;
+            background-color: white;
+            margin-bottom: 60px;
             position: relative;
+            margin-top: 0;
         }
 
         .message {
-            bottom: 0;
             padding: 10px;
             border-radius: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             max-width: 70%;
             word-wrap: break-word;
             white-space: pre-wrap;
-            position: relative;  /* Important for positioning the copy button */
+            position: relative;
         }
 
         .message.sent {
@@ -132,6 +137,8 @@
         .message.received {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            margin-bottom: 30px;
+            position: relative;
         }
 
         .message img {
@@ -139,52 +146,45 @@
             border-radius: 10px;
             margin-top: 5px;
         }
+
+        .copy-btn {
+            position: absolute;
+            overflow: scroll;
+            bottom: -19px;
+            left: 10px;
+            background-color: none;
+            color: black;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
     
-      .message.received {
-         margin-bottom: 50px;
-         scroll-behavior: smooth;
-         background-color: #f0f0f0;
-         font-family: Arial, sans-serif;
-         position: relative; /* Needed for the copy button */
+        .copy-btn span {
+            margin-right: 5px;
+        }
+    
+        .copy-btn:hover {
+            background-color: white;
         }
 
-     .copy-btn {
-         position: absolute;
-         overflow: scroll;  /*scroll until bottom */
-         bottom: -19px;    /* Positions the button at the bottom */
-         left: 10px;    /* Positions the button at the right corner */
-         background-color: none;
-         color: black;
-         border: none;
-         padding: 0;
-         cursor: pointer;
-         font-size: 14px;
-    }
-    
-    .copy-btn span {
-        margin-right: 5px; /* Space between icon and text */
-    }
-    
-     .copy-btn:hover {
-         background-color: white;
-    }
-
-     .copy-btn:focus {
-         outline: none;
-    }
+        .copy-btn:focus {
+            outline: none;
+        }
 
         .chat-input {
             display: none;
             align-items: center;
-            padding: 5px 10px;
+            padding: 5px;
             border-top: 1px solid #ddd;
             background-color: white;
             position: fixed;
-            bottom: 0px; 
+            bottom: 0;
             width: 100%;
             max-width: 600px;
             box-sizing: border-box;
-            margin-bottom: 0px;
+            z-index: 1000;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
         }
 
         .chat-input textarea {
@@ -196,7 +196,7 @@
             align-items: center;
             outline: none;
             gap: 10px;
-            font-size: 17px; /* Adjust font size for readability */
+            font-size: 17px;
             max-height: 150px;
             color: #333333;
             background-color: #f2f2f2;
@@ -204,13 +204,12 @@
             position: relative;
             margin-bottom: -0px;
             width: 100%;
-            border: 1px solid  #f2f2f2;
+            border: 1px solid #f2f2f2;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
 
-        
-         .chat-input button {
+        .chat-input button {
             background: none;
             border: none;
             cursor: pointer;
@@ -218,16 +217,14 @@
         }
 
         .chat-input button i {
-    font-size: 24px; /* Adjust the size to make it larger */
-    color: #4267B2;  /* Color of the icon */
-}
+            font-size: 24px;
+            color: #4267B2;
+        }
 
-      .chat-input button:disabled i {
-    color: #888;
-}
+        .chat-input button:disabled i {
+            color: #888;
+        }
 
-
-        /* Auth container */
         .auth-container {
             display: flex;
             justify-content: center;
@@ -268,7 +265,7 @@
         }
         
         .logout {
-           color: red;
+            color: red;
         }
   
         .auth-toggle {
@@ -279,308 +276,574 @@
             color: #4267B2;
             text-decoration: none;
         }
-        
- 
-.gotopbtn {
-    position: fixed; /* Keep it fixed */
-    width: 30px;  /* Further reduced width */
-    height: 30px; /* Further reduced height */
-    background: transparent; /* Background transparent */
-    bottom: 90px; /* Adjusted for visibility */
-    right: 20px;  /* Adjusted for visibility */
-    text-decoration: none;
-    text-align: center;
-    line-height: 30px; /* Adjusted for the new height */
-    color: black; /* Arrow color black */
-    font-size: 14px; /* Reduced font size */
-    border-radius: 15px; /* Makes it circular */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Adds a shadow for visibility */
-    transition: background 0.3s, transform 0.3s; /* Smooth transition effects */
-    z-index: 1000; /* Ensures it's on top of other elements */
-}
 
-.gotopbtn:hover {
-    background: rgba(0, 0, 0, 0.2); /* Light semi-transparent black on hover */
-}
-  
+        .gotopbtn {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            bottom: 90px;
+            right: 20px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            color: black;
+            font-size: 14px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
 
+        .gotopbtn:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .about-container, .features-container, .help-container, .chat-history-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 80px auto 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1001;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close-btn:hover {
+            color: #666;
+        }
+
+        .section-title {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #4267B2;
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            color: #4267B2;
+            position: absolute;
+            left: 0;
+        }
+
+        .help-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .help-question {
+            font-weight: bold;
+            color: #4267B2;
+            margin-bottom: 10px;
+        }
+
+        .help-answer {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .clear-history-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .clear-history-btn:hover {
+            background-color: #c82333;
+        }
+
+        .no-history-message {
+            text-align: center;
+            color: #666;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .history-message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .history-message.sent {
+            background-color: #DCF8C6;
+            margin-left: 20%;
+        }
+
+        .history-message.received {
+            background-color: #f0f0f0;
+            margin-right: 20%;
+        }
+
+        .message-timestamp {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
-
-<div class="auth-container" id="auth-container">
-    <div class="auth-box">
-        <h2 id="auth-title">Login</h2>
-        <input type="text" id="auth-username" placeholder="Username">
-        <input type="password" id="auth-password" placeholder="Password">
-        <button onclick="handleAuth()">Login</button>
-        <div class="auth-toggle">
-            <span id="toggle-text">Don't have an account? </span>
-            <a href="#" id="toggle-link" onclick="toggleAuth()">Sign Up</a>
+    <div class="auth-container" id="auth-container">
+        <div class="auth-box">
+            <h2 id="auth-title">Login</h2>
+            <input type="text" id="auth-username" placeholder="Username">
+            <input type="password" id="auth-password" placeholder="Password">
+            <button onclick="handleAuth()">Login</button>
+            <div class="auth-toggle">
+                <span id="toggle-text">Don't have an account? </span>
+                <a href="#" id="toggle-link" onclick="toggleAuth()">Sign Up</a>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="menu">
-    <div class="hamburger" onclick="toggleDropdown()">☰</div>
-    <div class="title">AI Chatbot &#9662;</div> <!-- Down arrow entity -->
-</div>
-    <div class="title">ㅤㅤ ㅤㅤㅤ ㅤㅤㅤ<span class="material-icons">ㅤㅤ ㅤ</span></div>
-<div class="dropdown" id="dropdown">
-    <a href="#" onclick="showContainer('chat')">Chat with AI</a>
-    <a href="#" onclick="showContainer('about')">About</a>
-    <a href="#" onclick="logout()">Logout</a>
-</div>
-
-<div id="chat" class="chat-container container">
-    <div class="chat-messages" id="chat-container"></div>
-    <div class="chat-input">
-        <textarea id="user-input" placeholder="Type your message..."></textarea>
-        <button onclick="sendMessage()" disabled>
-              <i class="fas fa-paper-plane"></i>
-        </button>
+    <div class="menu">
+        <div class="hamburger" onclick="toggleDropdown()">☰</div>
+        <div class="title">AI Chatbot &#9662;</div>
     </div>
-</div>
+
+    <div class="dropdown" id="dropdown">
+        <a href="#" onclick="showContainer('chat')">Chat with AI</a>
+        <a href="#" onclick="showContainer('about')">About</a>
+        <a href="#" onclick="showContainer('features')">Features</a>
+        <a href="#" onclick="showContainer('help')">Help</a>
+        <a href="#" onclick="showContainer('history')">Chat History</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div id="chat" class="chat-container container">
+        <div class="chat-messages" id="chat-container"></div>
+        <div class="chat-input">
+            <textarea id="user-input" placeholder="Type your message..."></textarea>
+            <button onclick="sendMessage()" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
     
-      <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+    <a class="gotopbtn" href="#"><i class="fas fa-arrow-up"></i></a>
 
-<div id="about" class="about-container container">
-    <h2>About this AI Chatbot</h2>
-    <p>This chatbot allows users to chat with an AI and receive text or image-based responses. Built with a modern user interface, it is designed for a seamless experience.</p>
-    <p>©<span id="year"></span> AI Chatbot. All rights reserved.</p>
-    <p>*******************************************************</p>
-    <p>*******************************************************</p>
-</div>
+    <div class="overlay" id="overlay"></div>
 
-<script>
-    let isLogin = true;
-    let users = JSON.parse(localStorage.getItem('users')) || {};
+    <div id="about" class="about-container">
+        <span class="close-btn" onclick="hideContainer('about')">&times;</span>
+        <h2 class="section-title">About this AI Chatbot</h2>
+        <div class="section-content">
+            <p>This advanced AI chatbot is designed to provide intelligent conversations and assist users with various tasks. Built with cutting-edge technology, it offers a seamless and intuitive experience.</p>
+            <p>Our mission is to make AI accessible and helpful for everyone, providing accurate and relevant responses while maintaining user privacy and data security.</p>
+            <p>©<span id="year"></span> AI Chatbot. All rights reserved.</p>
+        </div>
+    </div>
 
-    function toggleAuth() {
-        isLogin = !isLogin;
-        const authTitle = document.getElementById('auth-title');
-        const authButton = document.querySelector('.auth-box button');
-        const toggleText = document.getElementById('toggle-text');
-        const toggleLink = document.getElementById('toggle-link');
+    <div id="features" class="features-container">
+        <span class="close-btn" onclick="hideContainer('features')">&times;</span>
+        <h2 class="section-title">Features</h2>
+        <ul class="features-list">
+            <li>Natural Language Processing for human-like conversations</li>
+            <li>Real-time response generation</li>
+            <li>Multi-language support</li>
+            <li>Context-aware conversations</li>
+            <li>Secure user authentication</li>
+            <li>Message history and copying</li>
+            <li>Customizable interface</li>
+            <li>Dark mode support</li>
+            <li>Responsive design for all devices</li>
+        </ul>
+    </div>
 
-        if (isLogin) {
-            authTitle.textContent = 'Login';
-            authButton.textContent = 'Login';
-            toggleText.textContent = "Don't have an account? ";
-            toggleLink.textContent = 'Sign Up';
-        } else {
-            authTitle.textContent = 'Sign Up';
-            authButton.textContent = 'Sign Up';
-            toggleText.textContent = 'Already have an account? ';
-            toggleLink.textContent = 'Login';
-        }
-    }
+    <div id="help" class="help-container">
+        <span class="close-btn" onclick="hideContainer('help')">&times;</span>
+        <h2 class="section-title">Help Center</h2>
+        <div class="help-section">
+            <div class="help-question">How do I start a conversation?</div>
+            <div class="help-answer">Simply type your message in the chat input box and press enter or click the send button.</div>
+        </div>
+        <div class="help-section">
+            <div class="help-question">Can I copy the bot's responses?</div>
+            <div class="help-answer">Yes, click the copy button below any bot message to copy its content to your clipboard.</div>
+        </div>
+        <div class="help-section">
+            <div class="help-question">How do I change my settings?</div>
+            <div class="help-answer">Navigate to the Settings section through the menu to customize your experience.</div>
+        </div>
+        <div class="help-section">
+            <div class="help-question">Is my data secure?</div>
+            <div class="help-answer">Yes, we use secure authentication and encryption to protect your conversations and personal data.</div>
+        </div>
+    </div>
 
-    
-    document.addEventListener('DOMContentLoaded', function () {
-        updateGoTopBtn();
-        handleScroll(); // Ensure visibility of the button based on scroll position
+    <div id="history" class="chat-history-container">
+        <span class="close-btn" onclick="hideContainer('history')">&times;</span>
+        <h2 class="section-title">Chat History</h2>
+        <div id="history-content"></div>
+        <button class="clear-history-btn" onclick="clearHistory()">Clear History</button>
+    </div>
 
-        // Scroll to top button functionality
-        document.querySelector('.gotopbtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            document.getElementById('chat-container').scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    <script>
+        let isLogin = true;
+        let users = JSON.parse(localStorage.getItem('users')) || {};
+        let chatHistory = {};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChatHistory();
+            updateGoTopBtn();
+            handleScroll();
+
+            document.querySelector('.gotopbtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('chat-container').scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
+
+            document.getElementById('chat-container').addEventListener('scroll', handleScroll);
+
+            document.getElementById('user-input').addEventListener('input', function() {
+                autoResize(this);
+                document.querySelector('.chat-input button').disabled = this.value.trim().length === 0;
+            });
+
+            document.getElementById('overlay').addEventListener('click', function() {
+                document.querySelectorAll('.about-container, .features-container, .help-container, .chat-history-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+                this.style.display = 'none';
+            });
+
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                showContainer('chat');
+                document.querySelector('.chat-input').style.display = 'flex';
+            }
         });
 
-        // Show/hide go to top button on scroll
-        document.getElementById('chat-container').addEventListener('scroll', handleScroll);
-    });
-
-    function handleScroll() {
-        const goTopBtn = document.querySelector('.gotopbtn');
-        const chatContainer = document.getElementById('chat-container');
-        if (chatContainer.scrollTop > 200) { 
-            goTopBtn.style.display = 'block'; 
-        } else {
-            goTopBtn.style.display = 'none'; 
+        function loadChatHistory() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                chatHistory[currentUser] = JSON.parse(localStorage.getItem(`chatHistory_${currentUser}`)) || [];
+                displayStoredMessages();
+            }
         }
-    }
 
-    function updateGoTopBtn() {
-        const goTopBtn = document.querySelector('.gotopbtn');
-        const currentUser = localStorage.getItem('currentUser');
-        if (currentUser) {
-            goTopBtn.style.display = 'none'; // Initially hidden, will show on scroll
-        } else {
-            goTopBtn.style.display = 'none';
+        function saveMessageToHistory(text, sender, timestamp = new Date().toISOString()) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                if (!chatHistory[currentUser]) {
+                    chatHistory[currentUser] = [];
+                }
+                chatHistory[currentUser].push({
+                    text,
+                    sender,
+                    timestamp
+                });
+                localStorage.setItem(`chatHistory_${currentUser}`, JSON.stringify(chatHistory[currentUser]));
+            }
         }
-    }
 
-function handleAuth() {
-    const username = document.getElementById('auth-username').value;
-    const password = document.getElementById('auth-password').value;
-
-    if (isLogin) {
-        if (users[username] && users[username] === password) {
-            localStorage.setItem('currentUser', username);
-            showContainer('chat');
-            document.querySelector('.chat-input').style.display = 'flex';
-            updateGoTopBtn(); // Update button visibility after login
-        } else {
-            alert('Invalid username or password');
+        function displayStoredMessages() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser && chatHistory[currentUser]) {
+                const chatContainer = document.getElementById('chat-container');
+                chatContainer.innerHTML = '';
+                
+                chatHistory[currentUser].forEach(message => {
+                    displayMessage(message.text, message.sender, message.timestamp);
+                });
+            }
         }
-    } else {
-        if (username && password) {
-            if (users[username]) {
-                alert('Username already exists');
+
+        function showHistory() {
+            const currentUser = localStorage.getItem('currentUser');
+            const historyContent = document.getElementById('history-content');
+            historyContent.innerHTML = '';
+
+            if (currentUser && chatHistory[currentUser] && chatHistory[currentUser].length > 0) {
+                chatHistory[currentUser].forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `history-message ${message.sender}`;
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = message.text;
+                    messageDiv.appendChild(textSpan);
+
+                    const timestamp = document.createElement('div');
+                    timestamp.className = 'message-timestamp';
+                    timestamp.textContent = new Date(message.timestamp).toLocaleString();
+                    messageDiv.appendChild(timestamp);
+
+                    historyContent.appendChild(messageDiv);
+                });
             } else {
-                users[username] = password;
-                localStorage.setItem('users', JSON.stringify(users));
-                alert('Account created. Please login.');
-                toggleAuth();
+                const noHistory = document.createElement('p');
+                noHistory.className = 'no-history-message';
+                noHistory.textContent = 'No chat history available.';
+                historyContent.appendChild(noHistory);
             }
-        } else {
-            alert('Please enter both username and password');
         }
-    }
-}
 
-function logout() {
-    localStorage.removeItem('currentUser');
-    document.getElementById('auth-container').style.display = 'flex'; // Show login
-    document.querySelector('.menu').style.display = 'none'; // Hide menu
-    document.querySelector('.chat-input').style.display = 'none'; // Hide chat input
-    document.getElementById('dropdown').style.display = 'none'; // Hide dropdown
-    document.querySelectorAll('.container').forEach(container => container.classList.remove('active')); // Hide containers
-    updateGoTopBtn(); // Hide button after logout
-}
-
-function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
-
-function showContainer(containerId) {
-    const containers = document.querySelectorAll('.container');
-    containers.forEach(container => container.classList.remove('active'));
-
-    const selectedContainer = document.getElementById(containerId);
-    selectedContainer.classList.add('active');
-
-    document.getElementById('dropdown').style.display = 'none';
-    document.getElementById('auth-container').style.display = 'none';
-    document.querySelector('.menu').style.display = 'flex';
-}
-
-    function copyToClipboard(text, button) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 15px;">content_copy</span> Copied!';
-    
-    setTimeout(() => {
-        button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
-    }, 3000);
-}
-
-function sendMessage() {
-    const textarea = document.getElementById('user-input');
-    const userInput = textarea.value.trim();
-    if (userInput) {
-        displayMessage(userInput, 'sent');
-        textarea.value = '';
-        autoResize(textarea);
-        document.querySelector('.chat-input button').disabled = true;
-
-        const allCopyButtons = document.querySelectorAll('.copy-btn');
-        allCopyButtons.forEach(button => {
-            button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
-        });
-
-        fetchChatResponse(userInput);
-    }
-}
-
-function displayMessage(text, sender) {
-    const chatContainer = document.getElementById('chat-container');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message ' + sender;
-
-    if (Array.isArray(text)) {
-        text.forEach(imgSrc => {
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = "AI response image";
-            messageDiv.appendChild(img);
-        });
-    } else {
-        messageDiv.textContent = text;
-        if (sender === 'received') {
-            const copyBtn = document.createElement('button');
-            copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
-            copyBtn.className = 'copy-btn';
-            copyBtn.onclick = function() {
-                copyToClipboard(text, copyBtn);
-            };
-            messageDiv.appendChild(copyBtn);
+        function clearHistory() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                localStorage.removeItem(`chatHistory_${currentUser}`);
+                chatHistory[currentUser] = [];
+                document.getElementById('chat-container').innerHTML = '';
+                showHistory();
+                alert('Chat history has been cleared.');
+            }
         }
-    }
 
-    chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight; // Keep scroll at bottom
-}
-    
-    function sendMessage() {
-        const textarea = document.getElementById('user-input');
-        const userInput = textarea.value.trim();
-        if (userInput) {
-            displayMessage(userInput, 'sent');
-            textarea.value = '';
-            autoResize(textarea);
-            document.querySelector('.chat-input button').disabled = true;
+        function toggleAuth() {
+            isLogin = !isLogin;
+            const authTitle = document.getElementById('auth-title');
+            const authButton = document.querySelector('.auth-box button');
+            const toggleText = document.getElementById('toggle-text');
+            const toggleLink = document.getElementById('toggle-link');
 
-            fetchChatResponse(userInput);
+            if (isLogin) {
+                authTitle.textContent = 'Login';
+                authButton.textContent = 'Login';
+                toggleText.textContent = "Don't have an account? ";
+                toggleLink.textContent = 'Sign Up';
+            } else {
+                authTitle.textContent = 'Sign Up';
+                authButton.textContent = 'Sign Up';
+                toggleText.textContent = 'Already have an account? ';
+                toggleLink.textContent = 'Login';
+            }
         }
-    }
 
-    async function fetchChatResponse(userInput) {
-        try {
-            const response = await fetch(`/api/chat?prompt=${encodeURIComponent(userInput)}`);
-            const data = await response.json();
+        function handleScroll() {
+            const goTopBtn = document.querySelector('.gotopbtn');
+            const chatContainer = document.getElementById('chat-container');
+            if (chatContainer.scrollTop > 200) {
+                goTopBtn.style.display = 'block';
+            } else {
+                goTopBtn.style.display = 'none';
+            }
+        }
 
-            if (data.message) {
-                displayMessage(data.message, 'received');
+        function updateGoTopBtn() {
+            const goTopBtn = document.querySelector('.gotopbtn');
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                goTopBtn.style.display = 'none';
+            } else {
+                goTopBtn.style.display = 'none';
+            }
+        }
+
+        function handleAuth() {
+            const username = document.getElementById('auth-username').value;
+            const password = document.getElementById('auth-password').value;
+
+            if (isLogin) {
+                if (users[username] && users[username] === password) {
+                    localStorage.setItem('currentUser', username);
+                    showContainer('chat');
+                    document.querySelector('.chat-input').style.display = 'flex';
+                    updateGoTopBtn();
+                    loadChatHistory();
+                } else {
+                    alert('Invalid username or password');
+                }
+            } else {
+                if (username && password) {
+                    if (users[username]) {
+                        alert('Username already exists');
+                    } else {
+                        users[username] = password;
+                        localStorage.setItem('users', JSON.stringify(users));
+                        alert('Account created. Please login.');
+                        toggleAuth();
+                    }
+                } else {
+                    alert('Please enter both username and password');
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            document.getElementById('auth-container').style.display = 'flex';
+            document.querySelector('.menu').style.display = 'none';
+            document.querySelector('.chat-input').style.display = 'none';
+            document.getElementById('dropdown').style.display = 'none';
+            document.querySelectorAll('.container').forEach(container => container.classList.remove('active'));
+            updateGoTopBtn();
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showContainer(containerId) {
+            if (containerId === 'chat') {
+                const containers = document.querySelectorAll('.container');
+                containers.forEach(container => container.classList.remove('active'));
+                const selectedContainer = document.getElementById(containerId);
+                selectedContainer.classList.add('active');
+            } else {
+                if (containerId === 'history') {
+                    showHistory();
+                }
+                document.getElementById(containerId).style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
             }
 
-            if (data.images) {
-                displayMessage(data.images, 'received');
-            }
-        } catch (error) {
-            console.error("Error fetching AI response:", error);
+            document.getElementById('dropdown').style.display = 'none';
+            document.getElementById('auth-container').style.display = 'none';
+            document.querySelector('.menu').style.display = 'flex';
         }
-    }
 
-    document.getElementById('user-input').addEventListener('input', function () {
-        autoResize(this);
-        document.querySelector('.chat-input button').disabled = this.value.trim().length === 0;
-    });
+        function hideContainer(containerId) {
+            document.getElementById(containerId).style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
 
-    function autoResize(textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = (textarea.scrollHeight > 100 ? 100 : textarea.scrollHeight) + 'px';
-    }
-    document.getElementById("year").textContent = new Date().getFullYear();
+        function copyToClipboard(text, button) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
 
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-        showContainer('chat');
-        document.querySelector('.chat-input').style.display = 'flex';
-    }
-    
-    
-  
-</script>
+            button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 15px;">content_copy</span> Copied!';
+            
+            setTimeout(() => {
+                button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
+            }, 3000);
+        }
+
+        function displayMessage(text, sender, timestamp = new Date().toISOString()) {
+            const chatContainer = document.getElementById('chat-container');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + sender;
+
+            if (Array.isArray(text)) {
+                text.forEach(imgSrc => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = "AI response image";
+                    messageDiv.appendChild(img);
+                });
+            } else {
+                messageDiv.textContent = text;
+                if (sender === 'received') {
+                    const copyBtn = document.createElement('button');
+                    copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
+                    copyBtn.className = 'copy-btn';
+                    copyBtn.onclick = function() {
+                        copyToClipboard(text, copyBtn);
+                    };
+                    messageDiv.appendChild(copyBtn);
+                }
+            }
+
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            if (!Array.isArray(text)) {
+                saveMessageToHistory(text, sender, timestamp);
+            }
+        }
+
+        function sendMessage() {
+            const textarea = document.getElementById('user-input');
+            const userInput = textarea.value.trim();
+            if (userInput) {
+                displayMessage(userInput, 'sent');
+                textarea.value = '';
+                autoResize(textarea);
+                document.querySelector('.chat-input button').disabled = true;
+
+                const allCopyButtons = document.querySelectorAll('.copy-btn');
+                allCopyButtons.forEach(button => {
+                    button.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
+                });
+
+                fetchChatResponse(userInput);
+            }
+        }
+
+        async function fetchChatResponse(userInput) {
+            try {
+                const response = await fetch(`/api/chat?prompt=${encodeURIComponent(userInput)}`);
+                const data = await response.json();
+
+                if (data.message) {
+                    displayMessage(data.message, 'received');
+                }
+
+                if (data.images) {
+                    displayMessage(data.images, 'received');
+                }
+            } catch (error) {
+                console.error("Error fetching AI response:", error);
+            }
+        }
+
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight > 100 ? 100 : textarea.scrollHeight) + 'px';
+        }
+    </script>
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Previous styles remain unchanged */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
@@ -127,6 +128,8 @@
             word-wrap: break-word;
             white-space: pre-wrap;
             position: relative;
+            display: flex;
+            align-items: flex-start;
         }
 
         .message.sent {
@@ -141,6 +144,25 @@
             position: relative;
         }
 
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+            background-color: #4267B2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .message-content {
+            flex-grow: 1;
+        }
+
         .message img {
             max-width: 100%;
             border-radius: 10px;
@@ -151,7 +173,7 @@
             position: absolute;
             overflow: scroll;
             bottom: -19px;
-            left: 10px;
+            left: 45px;
             background-color: none;
             color: black;
             border: none;
@@ -642,21 +664,30 @@
                 fetchChatResponse(userInput);
             }
         }
-
-        function displayMessage(text, sender) {
+       function displayMessage(text, sender) {
             const chatContainer = document.getElementById('chat-container');
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message ' + sender;
+
+            if (sender === 'received') {
+                const avatar = document.createElement('div');
+                avatar.className = 'avatar';
+                avatar.textContent = 'AI';
+                messageDiv.appendChild(avatar);
+            }
+
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
 
             if (Array.isArray(text)) {
                 text.forEach(imgSrc => {
                     const img = document.createElement('img');
                     img.src = imgSrc;
                     img.alt = "AI response image";
-                    messageDiv.appendChild(img);
+                    messageContent.appendChild(img);
                 });
             } else {
-                messageDiv.textContent = text;
+                messageContent.textContent = text;
                 if (sender === 'received') {
                     const copyBtn = document.createElement('button');
                     copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span> Copy';
@@ -664,10 +695,11 @@
                     copyBtn.onclick = function() {
                         copyToClipboard(text, copyBtn);
                     };
-                    messageDiv.appendChild(copyBtn);
+                    messageContent.appendChild(copyBtn);
                 }
             }
 
+            messageDiv.appendChild(messageContent);
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }

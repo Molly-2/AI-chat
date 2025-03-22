@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Previous styles remain unchanged */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
@@ -121,6 +122,7 @@
 
         .message {
             padding: 10px;
+            border-radius: 20px;
             margin-bottom: 15px;
             max-width: 70%;
             word-wrap: break-word;
@@ -128,25 +130,18 @@
             position: relative;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
         }
 
         .message.sent {
             background-color: #DCF8C6;
             align-self: flex-end;
-            border-radius: 20px;
         }
 
         .message.received {
-            align-self: flex-start;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
             margin-bottom: 30px;
             position: relative;
-        }
-
-        .message.received .message-content {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 20px;
         }
 
         .avatar {
@@ -154,26 +149,32 @@
             height: 25px;
             border-radius: 50%;
             flex-shrink: 0;
-            transform: translateX(-3px); /* Adjust value as needed */
+            background-color: #4267B2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
             margin-top: 5px;
-            overflow: hidden;
         }
 
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+       message.received .message-content {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 20px;
         }
-
-        .message-content {
-            flex-grow: 1;
+        .message img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 5px;
         }
 
         .copy-btn {
             position: absolute;
             overflow: scroll;
             bottom: -19px;
-            left: 35px;
+            left: 45px;
             background-color: none;
             color: black;
             border: none;
@@ -664,8 +665,7 @@
                 fetchChatResponse(userInput);
             }
         }
-
-        function displayMessage(text, sender) {
+       function displayMessage(text, sender) {
             const chatContainer = document.getElementById('chat-container');
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message ' + sender;
@@ -673,10 +673,7 @@
             if (sender === 'received') {
                 const avatar = document.createElement('div');
                 avatar.className = 'avatar';
-                const avatarImg = document.createElement('img');
-                avatarImg.src = 'https://cdn.pixabay.com/photo/2017/10/24/00/39/bot-icon-2883144_960_720.png';
-                avatarImg.alt = 'AI Avatar';
-                avatar.appendChild(avatarImg);
+                avatar.textContent = 'AI';
                 messageDiv.appendChild(avatar);
             }
 

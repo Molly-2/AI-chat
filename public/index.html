@@ -120,9 +120,8 @@
             margin-top: 0;
         }
 
-        .message {
+           .message {
             padding: 10px;
-            border-radius: 20px;
             margin-bottom: 15px;
             max-width: 70%;
             word-wrap: break-word;
@@ -130,18 +129,25 @@
             position: relative;
             display: flex;
             align-items: flex-start;
+            gap: 8px;
         }
 
         .message.sent {
             background-color: #DCF8C6;
             align-self: flex-end;
+            border-radius: 20px;
         }
 
         .message.received {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            align-self: flex-start;
             margin-bottom: 30px;
             position: relative;
+        }
+
+        .message.received .message-content {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 20px;
         }
 
         .avatar {
